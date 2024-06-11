@@ -1,0 +1,117 @@
+<link
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+<div style="width: 100%;height: 25px; background-color: #240750;color: #E1F7F5; text-align: end; line-height: 25px; padding-right: 50px;">
+  <i class='bx bx-phone' ></i> 079 414 6888
+  <i class='bx bx-mail-send' ></i> giaiphap24h&#64;gmail.com
+</div>
+<div class="container">
+  <div class="header" style="font-weight: bold;line-height: 45px;">Xin chào: {{profileData.firstName}}</div>
+
+  <!--  -->
+  <div class="dropdown" style="background: inherit; border: none">
+    <button
+      style="background: inherit; border: none"
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="bx bx-user-circle" style="font-size: 30px; color: #333333"></i>
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+      style="padding: 0"
+    >
+      <div style="border: 1px solid #333; border-radius: 5px">
+        <p
+          style="
+            padding: 10px;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            font-weight: bold;
+          "
+        >
+          {{ profileData.email }}
+        </p>
+        <p style="padding: 0 10px; margin: 0; font-weight: 600; opacity: 0.6">
+          {{ profileData.lastName }} {{ profileData.firstName }}
+        </p>
+      </div>
+      <li routerLink="info" type="button" class="dropdown-item">
+        <i class="bx bx-info-circle" style="padding-right: 10px"></i> Thông tin
+        tài khoản
+      </li>
+      <li (click)="logOut()" type="button" class="dropdown-item">
+        <i class="bx bx-log-out" style="padding-right: 10px"> </i>Đăng xuất
+      </li>
+    </ul>
+  </div>
+  <!--  -->
+</div>
+<div class="d-flex align-items-start">
+  <div
+    class="nav flex-column nav-pills me-3"
+    id="v-pills-tab"
+    role="tablist"
+    aria-orientation="vertical"
+  >
+    <button
+      routerLink="customer"
+      class="nav-link active"
+      id="v-pills-home-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-home"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-home"
+      aria-selected="true"
+    >
+      Khách hàng
+    </button>
+    <button
+      routerLink="dashboard"
+      class="nav-link"
+      id="v-pills-profile-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-profile"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-profile"
+      aria-selected="false"
+    >
+      xx Dashboard
+    </button>
+    <!-- <button
+      routerLink="info"
+      class="nav-link"
+      id="v-pills-messages-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-messages"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-messages"
+      aria-selected="false"
+    >
+      Thông tin
+    </button> -->
+    <button
+      class="nav-link"
+      id="v-pills-settings-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#v-pills-settings"
+      type="button"
+      role="tab"
+      aria-controls="v-pills-settings"
+      aria-selected="false"
+    >
+      xx Settings
+    </button>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="center">
+  <div class="container">
+    <form [formGroup]="rfContact">
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3" style="font-weight: bold;">Khách hàng</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="customer"
+        />
+      </div>
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3" style="font-weight: bold;">Địa chỉ</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="address"
+        />
+      </div>
+
+      <!-- Email input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3" style="font-weight: bold;">Email</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+
+      <!-- Password input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example4" style="font-weight: bold;">Số điện thoại</label>
+        <input
+          type="text"
+          id="form3Example4"
+          class="form-control"
+          formControlName="phone"
+        />
+      </div>
+    </form>
+
+    <div class="modal-footer">
+      <button style="font-weight: bold; margin-right: 10px;" class="btn btn-outline-success" type="button" (click)="onAdd()">
+        Thêm
+      </button>
+      <button style="font-weight: bold;" class="btn btn-outline-danger" type="button" (click)="onExit()">
+        Thoát
+      </button>
+    </div>
+
+    <div *ngIf="!checkNull" class="w-500"></div>
+    <div *ngIf="checkNull" class="alert alert-danger w-500" role="alert">
+      <i class="bx bx-error"></i> Hãy nhập đủ thông tin khách hàng
+    </div>
+  </div>
+</div>

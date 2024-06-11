@@ -1,0 +1,275 @@
+<!-- Form Edit -->
+<ng-template #edit let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Sửa thông tin khách hàng</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="rfContact">
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Khách hàng</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="customer"
+        />
+      </div>
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Địa chỉ</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="address"
+        />
+      </div>
+
+      <!-- Email input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Email</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+
+      <!-- Password input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example4">Số điện thoại</label>
+        <input
+          type="text"
+          id="form3Example4"
+          class="form-control"
+          formControlName="phone"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveEdit()">
+      Save
+    </button>
+  </div>
+</ng-template>
+<!--  -->
+
+<!-- Form Edit Search-->
+<ng-template #editSearch let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Sửa thông tin tìm kiếm khách hàng
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="rfContactEditSearch">
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Khách hàng</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="customer"
+        />
+      </div>
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Địa chỉ</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="address"
+        />
+      </div>
+
+      <!-- Email input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example3">Email</label>
+        <input
+          type="email"
+          id="form3Example3"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+
+      <!-- Password input -->
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form3Example4">Số điện thoại</label>
+        <input
+          type="text"
+          id="form3Example4"
+          class="form-control"
+          formControlName="phone"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="saveEditSearch()"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+
+<!--  -->
+
+<!-- Table search -->
+<ng-template #search let-c="close" let-d="dismiss">
+  <div style="position: absolute; right: 50%; transform: translateX(50%)">
+    <div class="modal-header" style="width: 900px; background-color: #ffffff">
+      <h4 class="modal-title" id="modal-basic-title">
+        Danh sách tìm kiếm khách hàng
+      </h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body" style="width: 900px; background-color: #ffffff">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Khách hàng</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Email</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">
+              Thời gian
+              <i
+                type="button"
+                class="btn btn-secondary"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Thời gian thay đổi gần nhất"
+                class="bx bx-error-circle"
+              ></i>
+            </th>
+            <th scope="col">Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listSearch; index as inx">
+            <td>{{ item.customer }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.time | date : "medium" }}</td>
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-warning"
+                (click)="openEditSearch(editSearch, item.id)"
+              >
+                <i class="bx bx-edit-alt"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="onDeleteSearch(item.id,search)"
+              >
+                <i class="bx bx-x"></i>
+              </button>
+            </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer" style="width: 900px; background-color: #ffffff">
+      <button type="button" class="btn btn-outline-dark" (click)="exitSearch()">
+        Thoát
+      </button>
+    </div>
+  </div>
+</ng-template>
+<!--  -->
+
+<div class="center">
+  <button
+    routerLink="../add-customer"
+    type="button"
+    class="btn btn-outline-success"
+  >
+    <i class="bx bx-add-to-queue"></i> Thêm khách hàng
+  </button>
+  <div class="seach" [formGroup]="rfContactSearch">
+    <input
+      class="bd-1 input-search"
+      type="text"
+      placeholder="Tìm kiếm khách hàng"
+      formControlName="search"
+    />
+    <i
+      (click)="openSearch(search)"
+      class="bx bx-search-alt bd-1 icon-search"
+    ></i>
+  </div>
+</div>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Khách hàng</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Email</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">
+          Thời gian
+          <i
+            type="button"
+            class="btn btn-secondary"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Thời gian thay đổi gần nhất"
+            class="bx bx-error-circle"
+          ></i>
+        </th>
+        <th scope="col">Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataCustomer; index as inx">
+        <td>{{ item.customer }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.phone }}</td>
+        <td>{{ item.time | date : "medium" }}</td>
+        <div>
+          <button
+            type="button"
+            class="btn btn-outline-warning"
+            (click)="openEdit(edit, inx)"
+          >
+            <i class="bx bx-edit-alt"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onDelete(inx)"
+          >
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
